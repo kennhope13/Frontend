@@ -1,0 +1,33 @@
+.navbarr {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+}
+
+.navbarr>* {
+    margin-left: 2rem;
+    color: #9c6644;
+    text-decoration: none;
+    transition: 200ms ease-in-out;
+}
+
+.navbarr > *:hover{
+    color: #e76f51;
+    text-decoration: none;
+}
+
+  .logo{
+    background-image: url("../../public/logo.jpg");
+    background-size: contain; /* Ensure the image fits within the element */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    width: 200px; /* Specify the width of the logo container */
+    height: 100px; /* Specify the height of the logo container */
+    border-radius: 100%; /* Apply rounded corners */
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }

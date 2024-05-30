@@ -1,0 +1,65 @@
+.tb-admin {
+    margin-top: 50px;
+}
+
+.btn-plus {
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    float: right;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 30px;
+}
+
+.btn-plus:hover {
+    background-color: #ff8fa3;
+}
+
+.btn-plus i:hover {
+    color: white;
+}
+
+.btn-plus i {
+    margin-right: 5px;
+    font-size: 20px;
+    color: #e76f51;
+}
+
+.btn-plus:focus {
+    outline: 2px solid #555;
+    outline-offset: 2px;
+}
+.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    height: auto;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+.add-dogs {
+    display: flex;
+    justify-content: space-between; /* Tạo khoảng cách giữa hai cột */
+    gap: 20px; /* Khoảng cách giữa các cột */
+}
+.btn-add{
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    float: right;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 30px;
+}
+
+

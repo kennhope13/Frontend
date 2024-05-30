@@ -1,0 +1,130 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black /* Light background color */
+}
+
+.footer .col-lg-4 {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.footer img {
+    width: 100%;
+    height: auto;
+    
+}
+.footer p{
+    color: white;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.styled-image {
+    width: 100%;
+    max-width: 200px; /* Giới hạn chiều rộng tối đa */
+   
+    border-radius: 10px; /* Bo góc hình ảnh */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng hình ảnh */
+    
+}
+.col-lg-4 h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.col-lg-4 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.col-lg-4 ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: white;
+    text-align: justify;
+}
+.social-media-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-media-list li {
+    margin: 0 10px;
+}
+
+.social-media-list img {
+    width: 40px; /* Đặt chiều rộng cho các biểu tượng */
+    height: 40px; /* Đặt chiều cao cho các biểu tượng */
+    transition: transform 0.3s;
+}
+
+.social-media-list img:hover {
+    transform: scale(1.2); /* Tạo hiệu ứng phóng to khi hover */
+}
+
+@media (max-width: 768px) {
+    .col-lg-4 {
+        max-width: 100%;
+    }
+
+    .social-media-list {
+        justify-content: space-between;
+    }
+
+    .social-media-list img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.col-lg-4 ul li:hover {
+    color: #999; /* Thay đổi màu khi hover */
+    cursor: pointer;
+    text-align: justify;
+}
+
+.image-container p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
+    font-style: italic; /* Làm cho chữ nghiêng */
+}
+.banquyen{
+    color: #999;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .col-lg-4 {
+        max-width: 100%;
+    }
+
+    .col-lg-4 ul {
+        padding-left: 20px;
+    }
+
+    .col-lg-4 ul li {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .col-lg-4 {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+}

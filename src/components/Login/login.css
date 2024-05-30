@@ -1,0 +1,110 @@
+.user-login {
+    width: 350px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-image: url("https://images.unsplash.com/photo-1597633425046-08f5110420b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 65%;
+}
+
+.user-login div {
+    margin-bottom: 15px;
+}
+
+.user-login h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    
+}
+.user-login h4 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.user-login input[type="text"],
+.user-login input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.user-login input[type="text"]:focus,
+.user-login input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.user-login input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.user-login input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.btn-sigin{
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 30px;
+}
+.btn-login{
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 30px;
+}
+.btn-login:hover, .btn-sigin:hover{
+    background-color: #ff8fa3;
+}
+.btn-sigin {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    
+}
+
+.btn-sigin:hover {
+    background-color: #45a049; /* Darker green */
+    transform: scale(1.05);
+}
+
+/* Log in button specific styling */
+.btn-login {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #007bb5; /* Darker blue */
+    transform: scale(1.05);
+}
+
+/* Optional: Add focus styling for accessibility */
+button:focus {
+    outline: 2px solid #555;
+    outline-offset: 2px;
+}
