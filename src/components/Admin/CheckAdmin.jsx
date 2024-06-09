@@ -7,7 +7,7 @@ const useCheckAdmin = () => {
     useEffect(() => {
         const fetchToken = async () => {
             const token = cookie.get('TOKEN');
-            console.log("/////", token);
+            console.log("Token", token);
             if (!token) {
                 console.log("Không có token");
                 navigate('/login')
@@ -16,7 +16,7 @@ const useCheckAdmin = () => {
                     const res = await axios.get('http://localhost:3001/checkadmin', {
                         withCredentials: true
                     })
-                    console.log("dataaaaaa", res.data.result);
+                    // console.log("dataaaaaa", res.data.result);
                     if (res.data.result === 1) {
                         navigate('/admin')
                     } else{

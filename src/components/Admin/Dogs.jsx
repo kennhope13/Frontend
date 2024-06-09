@@ -7,15 +7,40 @@ const Listdogs = (props) => {
     const { alldogss } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [editMode, setEditMode] = useState(false);
+    const [profileImg, setProfileImg] = useState("");
+    const [isFileUploaded, setIsFileUploaded] = useState(false);
     const toggleVisibility = async () => {
         setIsVisible(!isVisible);
         setEditMode(false);
     };
+    //UPLOAD FILE
+    const onFileChange = (e) => {
+        setProfileImg(e.target.files[0]);
+    }
     //thêm chó
+
+    const onUpload = (e) => {
+        e.preventDefault();
+        const formDataUpLoad = new FormData();
+        formDataUpLoad.append('avatar', profileImg);
+        //console.log("ádfasdf",formDataUpLoad);
+        axios
+            .post("http://localhost:3001/xuly", formDataUpLoad, {})
+            .then((res) => {
+                console.log(res);
+                setProfileImg(res.data.filename); // Đường dẫn URL của file đã upload
+                setIsFileUploaded(true);
+            })
+    }
+    const handleChange = (e) => {
+        handleInput(e);
+        onFileChange(e);
+    }
     const [formDataDog, setFormDataDog] = useState({
         name: '',
         breed: '',
         decription: '',
+        imageUrl: '',
         price: '',
     })
     const handleInput = async (event) => {
@@ -29,9 +54,14 @@ const Listdogs = (props) => {
     }
     const handleAddDog = async (e) => {
         e.preventDefault();
+        const dogsData = {
+            ...formDataDog,
+            imageUrl: profileImg // Sử dụng URL đã upload
+        };
+        console.log("dogData: ", dogsData);
         if (editMode) {
-            const res = await axios.post(`http://localhost:3001/updateDogs/${formDataDog._id}`, formDataDog)
-            console.log("id-dogs: ",formDataDog._id);
+            const res = await axios.post(`http://localhost:3001/updateDogs/${dogsData._id}`, dogsData)
+            console.log("id-dogs: ", dogsData._id);
             if (res.data.result === 1) {
                 alert("CẬP NHẬT THÀNH CÔNG.");
                 window.location.reload();
@@ -39,9 +69,9 @@ const Listdogs = (props) => {
                 alert(res.data.message);
             }
         } else {
-            const res = await axios.post('http://localhost:3001/registerDog', formDataDog)
+            const res = await axios.post('http://localhost:3001/registerDog', dogsData)
             // console.log("data: ", formDataDog);
-            console.log(res.data);
+            console.log(res.data.data.imageUrl);
             if (res.data.result === 1) {
                 alert("Thêm thành công.");
                 window.location.reload();
@@ -104,9 +134,18 @@ const Listdogs = (props) => {
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">HÌNH ẢNH</label>
-
+                                    <div className="mb-3">
+                                        <input type="file" value={formDataDog.Image} className="form-control" onChange={handleChange} name="Image" />
+                                    </div>
+                                    <div>
+                                        <button className="btn btn-success" type="submit " onClick={onUpload}>
+                                            Upload
+                                        </button>
+                                    </div>
                                 </div>
-                                <button type="submit" className="btn btn-secondary btn-add">{editMode ? 'CẬP NHẬT' : 'THÊM'}</button>
+                                <div>
+                                    <button type="submit" className="btn btn-secondary btn-add">{editMode ? 'CẬP NHẬT' : 'THÊM'}</button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -137,7 +176,7 @@ const Listdogs = (props) => {
                                         <td>{dog.breed}</td>
                                         <td>{dog.decription}</td>
                                         <td>{dog.price}</td>
-                                        <td><img src={dog.Image} alt={dog.Name} style={{ width: '50px', height: '50px' }} /></td>
+                                        <td><img src={`upload/${dog.imageUrl}`} alt={dog.Name} style={{ width: '50px', height: '50px' }} /></td>
                                         <td><a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" onClick={handleUpdateClick}></i></a>
                                             &nbsp; <a href=""><i class="fa fa-trash-o" aria-hidden="true" onClick={handleDeleteCLick}></i></a>
                                         </td>
