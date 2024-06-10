@@ -12,12 +12,14 @@ import Signin from './components/Signin/signin';
 import Footter from './Footter/Footter';
 import Admin from './components/Admin/Admin';
 import Listdogs from './components/Admin/Dogs';
+import { Helmet } from 'react-helmet';
 function App() {
   const [alldogss, setAllDogss] = useState([]);
   const [alldogs, setAllDogs] = useState([]);
   const [myCart, addToCart] = useState([{}])
   const [allUsers, setAllUsers] = useState([]);
   const [total, setTotal] = useState(0);
+  const TITLE = 'PETSAIGON';
   useEffect(() => {
     // lấy dữ liệu dogs từ backend
     async function getData() {
@@ -50,10 +52,16 @@ function App() {
 
   return (
     <CartContext.Provider value={{ myCart, addToCart, total, setTotal }}>
+      <Helmet>
+      <title>{ TITLE }</title>
+      <link rel="icon" href="https://bizweb.dktcdn.net/100/092/840/themes/885495/assets/favicon.png?1715850200207" sizes="128x128"/>
+      </Helmet>
       <Router>
+        
         <Navbar></Navbar>
         {/* <div className="page-container"> */}
         <Routes>
+          
           <Route path='/' element={<Home />} />
           <Route path='/dogs' element={<DogsPage alldogs={alldogs} />} />
           <Route path='/checkout' element={<Cart />} />
@@ -66,6 +74,7 @@ function App() {
         {/* </div> */}
 
       </Router>
+      
     </CartContext.Provider>
   );
 }

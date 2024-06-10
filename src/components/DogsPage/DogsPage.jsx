@@ -2,6 +2,7 @@ import DogCart from "./DogsCart";
 import "./Dogs.css";
 const DogsPage = (props) => {
     const { alldogs } = props;
+    console.log("all dog: ",props);
     return (
 
         <section className="dogs-container">

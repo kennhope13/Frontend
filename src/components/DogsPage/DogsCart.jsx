@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import "./Dogs.css";
 import { CartContext } from "../../Context/CartContext";
+import axios from "axios";
 const DogCart = (props) => {
     const {  name, breed, decription, price, imageUrl } = props;
     const { addToCart, setTotal } = useContext(CartContext);
     const [isAdded, setAdded] = useState(false);
-    const handleClick = () => {
+    const handleClick = async() => {
         setAdded(true);
         const newItems = {
             name: name,
@@ -13,7 +14,9 @@ const DogCart = (props) => {
             imageUrl: imageUrl,
         }
         addToCart((item) => [...item, newItems]);
-        setTotal((total) => (total += Number(price)))
+        setTotal((total) => (total += Number(price)));
+        const res = await axios.post('http://localhost:3001/dogs-cart',newItems);
+        console.log("Data dog: ",res);
     }
     return (
         <>
@@ -23,7 +26,7 @@ const DogCart = (props) => {
                     <p>{breed}</p>
                 </div>
                 <div className="dogs-img-container">
-                    <img className="dog-img" src={imageUrl} alt="error" />
+                    <img className="dog-img" src={`upload/${imageUrl}`} alt="error" />
                 </div>
                 <div className="dogs-desc">{decription}</div>
                 <div className="dogs-price">{price}$</div>
