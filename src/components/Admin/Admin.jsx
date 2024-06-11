@@ -24,7 +24,7 @@ const Admin = (props) => {
         setProfileImg(e.target.files[0]);
     }
     const onUpload = (e)=>{
-        e.preventDefault();
+         e.preventDefault();
         const formDataUpLoad = new FormData();
         formDataUpLoad.append('avatar',profileImg);
         //console.log("ádfasdf",formDataUpLoad);
