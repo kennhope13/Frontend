@@ -3,6 +3,7 @@ import "./Cart.css"
 import { CartContext } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
 const Cart = () => {
     const { myCart, total, addToCart, setTotal } = useContext(CartContext);
     const [allDogsCart, setAllDogsCart] = useState([]);
@@ -15,14 +16,21 @@ const Cart = () => {
         navigate("/");
     }
     useEffect(() => {
-        async function getDataDog(e) {
-           // const userId = e.target.closest('tr').getAttribute('data-id');
-            const res = await axios.get(`./cart`);
-            console.log("dogs: ", res.data);
+        async function getDataDog() {
+            const res = await axios.get(`/cart`);
             return res;
         }
-        getDataDog().then((res) => setAllDogsCart(res.data.data));
-        getDataDog().catch((err) => console.log("Err", err));
+        try {
+            if (Cookies.get('USERID')) {
+                getDataDog().then((res) => setAllDogsCart(res.data.data.dogItems));
+                getDataDog().catch((err) => console.log("Err", err));
+            }else{
+                console.log("KHÔNG CÓ ID");
+            }
+        } catch (err) {
+            console.log("Không có items");
+        }
+
     }, [])
     return (
         <>

@@ -33,7 +33,7 @@ const Login = () => {
             console.log("dataLogin: ", response.data);
             if (response.data.result === 1 && response.data.data && response.data.data.Token) {
                 setCookie("TOKEN", response.data.data.Token);
-                setCookie("USERID", response.data.newToken._id);
+                setCookie("USERID", response.data.data._id);
                 alert("Đăng nhập tài khoản thành công.");
 
                 window.location.reload();
