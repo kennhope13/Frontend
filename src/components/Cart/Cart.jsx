@@ -20,17 +20,18 @@ const Cart = () => {
             const res = await axios.get(`/cart`);
             return res;
         }
-        try {
-            if (Cookies.get('USERID')) {
-                getDataDog().then((res) => setAllDogsCart(res.data.data.dogItems));
-                getDataDog().catch((err) => console.log("Err", err));
-            }else{
-                console.log("KHÔNG CÓ ID");
-            }
-        } catch (err) {
-            console.log("Không có items");
+        if (Cookies.get('USERID')) {
+            getDataDog()
+                .then((res) => {
+                     console.log(res.data.data);
+                    if ((res.data.data)) {
+                        setAllDogsCart(res.data.data.dogItems);
+                    }
+                })
+                .catch((err) => console.log("Err", err));
+        } else {
+            console.log("KHÔNG CÓ ID");
         }
-
     }, [])
     return (
         <>
