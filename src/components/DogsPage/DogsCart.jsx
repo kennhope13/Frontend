@@ -23,7 +23,7 @@ const DogCart = (props) => {
         setTotal((total) => (total += Number(price)));
         const res = await axios.post('http://localhost:3001/dogs-cart', newItems);
         
-        console.log("Data dog: ", res);
+        // console.log("Data dog: ", res);
     }
     return (
         <>

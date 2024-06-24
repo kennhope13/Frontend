@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     async function getDataUser() {
       const res = await axios.post("./listuser");
-      console.log(res.data.userData);
+      // console.log(res.data.userData);
       return res;
     }
     getDataUser().then((res) => setAllUsers(res.data.userData));
@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     async function getDataDog() {
       const res = await axios.post("./listdog");
-      console.log(res.data);
+      // console.log(res.data);
       return res;
     }
     getDataDog().then((res) => setAllDogss(res.data.data));

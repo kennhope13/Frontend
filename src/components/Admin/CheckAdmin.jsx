@@ -7,9 +7,9 @@ const useCheckAdmin = () => {
     useEffect(() => {
         const fetchToken = async () => {
             const token = cookie.get('TOKEN');
-            console.log("Token", token);
+            // console.log("Token", token);
             if (!token) {
-                console.log("Không có token");
+                // console.log("Không có token");
                 navigate('/login')
             } else {
                 try {

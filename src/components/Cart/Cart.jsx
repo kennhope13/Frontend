@@ -23,7 +23,7 @@ const Cart = () => {
         if (Cookies.get('USERID')) {
             getDataDog()
                 .then((res) => {
-                     console.log(res.data.data);
+                    //  console.log(res.data.data);
                     if ((res.data.data)) {
                         setAllDogsCart(res.data.data.dogItems);
                     }
