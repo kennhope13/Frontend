@@ -2,8 +2,10 @@ import NavbarAdmin from "../../Navbar/NavbarAdmin.jsx";
 import "../../font-awesome-4.7.0 (1)/font-awesome-4.7.0/css/font-awesome.min.css";
 import "./Admin.css";
 import React, { useState } from 'react';
+import checkAdmin from "../Admin/CheckAdmin.jsx"
 import axios from "axios";
 const Listdogs = (props) => {
+    checkAdmin();
     const { alldogss } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [editMode, setEditMode] = useState(false);

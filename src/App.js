@@ -13,6 +13,7 @@ import Footter from './Footter/Footter';
 import Admin from './components/Admin/Admin';
 import Listdogs from './components/Admin/Dogs';
 import { Helmet } from 'react-helmet';
+import NavbarAdmin from './Navbar/NavbarAdmin'
 function App() {
   const [alldogss, setAllDogss] = useState([]);
   const [alldogs, setAllDogs] = useState([]);
@@ -53,15 +54,13 @@ function App() {
   return (
     <CartContext.Provider value={{ myCart, addToCart, total, setTotal }}>
       <Helmet>
-      <title>{ TITLE }</title>
-      <link rel="icon" href="https://bizweb.dktcdn.net/100/092/840/themes/885495/assets/favicon.png?1715850200207" sizes="128x128"/>
+        <title>{TITLE}</title>
+        <link rel="icon" href="https://bizweb.dktcdn.net/100/092/840/themes/885495/assets/favicon.png?1715850200207" sizes="128x128" />
       </Helmet>
       <Router>
-        
+
         <Navbar></Navbar>
-        {/* <div className="page-container"> */}
         <Routes>
-          
           <Route path='/' element={<Home />} />
           <Route path='/dogs' element={<DogsPage alldogs={alldogs} />} />
           <Route path='/checkout' element={<Cart />} />
@@ -71,10 +70,8 @@ function App() {
           <Route path='/admin-dogs' element={<Listdogs alldogss={alldogss} />} />
         </Routes>
         <Footter></Footter>
-        {/* </div> */}
-
       </Router>
-      
+
     </CartContext.Provider>
   );
 }
