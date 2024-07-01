@@ -48,7 +48,7 @@ const Navbar = () => {
                     //console.log("oke: ", res.data.data.data.Image);
                     
                 } catch (error) {
-                    console.error("Lỗi đăng xuất: ", error);
+                    console.error("Lỗi Token: ", error);
                 }
             }
         };
@@ -59,22 +59,22 @@ const Navbar = () => {
     
     return (
         <>
-
             <nav className="navbarr">
                 <div className="logo"></div>
                 <Link to="/">Trang chủ</Link>
                 <Link to="/dogs">Danh sách chó</Link>
                 <Link to="/checkout">Giỏ hàng</Link>
-                <Link to={auth ? "/" : "/login"} >{auth ? <div class="btn-group">
+                <Link to={auth ? "/admin" : "/login"} >{auth ? <div class="btn-group">
                     <span class="visually-hidde" ><img src={`upload/${imageUrl}`} style={{ width: '30px', height: '30px', borderRadius:'40px'}}/></span>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Hồ sơ của bạn</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><i class="fa fa-user" aria-hidden="true"></i> <Link to="/profile">&nbsp;Thông tin cá nhân</Link></li>
+                        <li><i class="fa fa-key" aria-hidden="true"></i><Link to="">&nbsp;Đổi mật Khẩu</Link></li>
+                        {/* <li><a class="dropdown-item" href="#">Something else here</a></li> */}
                         <li><hr class="dropdown-divider"></hr></li>
-                        <li><a class="dropdown-item" onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Đăng xuất</a></li>
+                        <li onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Đăng xuất</li>
                     </ul>
                 </div> : 'Đăng nhập'} </Link>
+                
             </nav>
         </>
     );

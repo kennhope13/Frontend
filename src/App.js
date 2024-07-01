@@ -4,7 +4,7 @@ import Home from './components/Home/Home';
 import DogsPage from './components/DogsPage/DogsPage';
 import Cart from './components/Cart/Cart';
 import Navbar from './Navbar/Navbar';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { CartContext } from "./Context/CartContext";
 import Login from './components/Login/login';
@@ -13,7 +13,9 @@ import Footter from './Footter/Footter';
 import Admin from './components/Admin/Admin';
 import Listdogs from './components/Admin/Dogs';
 import { Helmet } from 'react-helmet';
-import NavbarAdmin from './Navbar/NavbarAdmin'
+import PrivateRoute from './PrivateRoute';
+import useCheckAdmin from './components/Admin/CheckAdmin';
+import Profile from './components/Users/Profile'
 function App() {
   const [alldogss, setAllDogss] = useState([]);
   const [alldogs, setAllDogs] = useState([]);
@@ -21,6 +23,7 @@ function App() {
   const [allUsers, setAllUsers] = useState([]);
   const [total, setTotal] = useState(0);
   const TITLE = 'PETSAIGON';
+  
   useEffect(() => {
     // lấy dữ liệu dogs từ backend
     async function getData() {
@@ -50,8 +53,20 @@ function App() {
     getDataDog().catch((err) => console.log("Err: ", err));
   }, [])
 
-
+  // const AppContent = () => {
+  //   const isAdmin = useCheckAdmin();
+  
+  //   return (
+  //     <Routes>
+  //       {/* <PrivateRoute path="/admin" element={<Admin />} isAdmin={isAdmin} />
+  //       <PrivateRoute path="/admin-dogs" element={<Listdogs />} isAdmin={isAdmin} /> */}
+  //       <Route path="/admin" element={<PrivateRoute element={<Admin allUsers={allUsers} />} isAdmin={isAdmin}  />} />
+  //       <Route path="/admin-dogs" element={<PrivateRoute element={<Listdogs alldogss={alldogss} />}isAdmin={isAdmin}  />} />
+  //     </Routes>
+  //   );
+  // };
   return (
+    
     <CartContext.Provider value={{ myCart, addToCart, total, setTotal }}>
       <Helmet>
         <title>{TITLE}</title>
@@ -66,9 +81,13 @@ function App() {
           <Route path='/checkout' element={<Cart />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signin' element={<Signin />} />
-          <Route path='/admin' element={<Admin allUsers={allUsers} />} />
-          <Route path='/admin-dogs' element={<Listdogs alldogss={alldogss} />} />
+          <Route path='/profile' element={<Profile/>}/>
+          {/* <PrivateRoute path="/admin" element={<Admin />} isAdmin={isAdmin} />
+          <PrivateRoute path="/admin-dogs" element={<Listdogs />} isAdmin={isAdmin} /> */}
+          <Route path="/admin" element={<Admin allUsers={allUsers} />} />
+          <Route  path="/admin-dogs" element={<Listdogs alldogss={alldogss} />} />
         </Routes>
+        {/* <AppContent /> */}
         <Footter></Footter>
       </Router>
 

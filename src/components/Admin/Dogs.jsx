@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import checkAdmin from "../Admin/CheckAdmin.jsx"
 import axios from "axios";
 const Listdogs = (props) => {
-    checkAdmin();
+    //checkAdmin();
     const { alldogss } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [editMode, setEditMode] = useState(false);

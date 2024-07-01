@@ -54,3 +54,36 @@
     overflow: hidden;
     background-color: #e9ecef;
 }
+.dropdown-menu {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+  min-width: 160px;
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  color: #e76f51;
+}
+
+.dropdown-menu li i {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #ccc;
+  margin: 5px 0;
+}
