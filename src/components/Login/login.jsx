@@ -49,7 +49,7 @@ const Login = () => {
     return (
         <>
             <section className="user-login">
-                <div><h4>LOGIN</h4></div>
+                <div><h4>ĐĂNG NHẬP</h4></div>
                 <div>
                     <h3>Email: </h3>
                     <input type="text" id="email-user" name="Email" value={formDataLogin.Email} onChange={handleInput} />
@@ -58,8 +58,8 @@ const Login = () => {
                     <h3>Password: </h3>
                     <input type="password" id="password-user" name="Password" value={formDataLogin.Password} onChange={handleInput} />
                 </div>
-                <button className="btn-sigin" onClick={handleSignin}>Sign in</button>
-                <button className="btn-login" onClick={handleLogin} >Log in</button>
+                <button className="btn-sigin" onClick={handleSignin}>Đăng ký</button>
+                <button className="btn-login" onClick={handleLogin} >Đăng nhập</button>
 
             </section>
         </>

@@ -1,27 +1,31 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import "./Dogs.css";
-import { CartContext } from "../../Context/CartContext";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 const DogCart = (props) => {
     const { name, breed, decription, price, imageUrl } = props;
-    const { addToCart, setTotal } = useContext(CartContext);
     const [isAdded, setAdded] = useState(false);
+    const navigate = useNavigate();
     const handleClick = async () => {
-
-        setAdded(true);
-        const newItems = {
-            dog_items: {
-                name: name,
-                price: price,
-                imageUrl: imageUrl
-            },
-            userId: Cookies.get('USERID'),
-            // imageUrl: imageUrl,
+        const token = Cookies.get("TOKEN");
+        if(!token){
+            navigate("/login");
+        }else{
+            setAdded(true);
+            const newItems = {
+                dog_items: {
+                    name: name,
+                    price: price,
+                    imageUrl: imageUrl
+                },
+                userId: Cookies.get('USERID'),
+                // imageUrl: imageUrl,
+            }
+            
+            const res = await axios.post('http://localhost:3001/dogs-cart', newItems);
         }
-        addToCart((item) => [...item, newItems]);
-        setTotal((total) => (total += Number(price)));
-        const res = await axios.post('http://localhost:3001/dogs-cart', newItems);
+        
         
         // console.log("Data dog: ", res);
     }

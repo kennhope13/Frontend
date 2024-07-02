@@ -31,7 +31,7 @@ const Signin = () => {
             alert("Đăng ký tài khoản thành công.");
             navigate("/login");
         }else{
-            alert("Đăng ký tài khoản không thành công.");
+            alert(response.data.message);
         }
         
 
@@ -47,7 +47,7 @@ const Signin = () => {
     return (
         <>
             <section className="user-signin">
-                <div><h4>SIGN IN</h4></div>
+                <div><h4>ĐĂNG KÝ</h4></div>
                 <form onSubmit={handleSignin}>
                     <div>
                         <h3>Email:  </h3>
@@ -61,7 +61,7 @@ const Signin = () => {
                         <h3>Password: </h3>
                         <input value={formData.Password} type="password" id="password-user" name="Password" onChange={handleInput} />
                     </div>
-                    <button className="btn-sigin" id="btn-signinn" type="submit">Sign in</button>
+                    <button className="btn-sigin" id="btn-signinn" type="submit">Đăng ký</button>
                 </form>
 
 

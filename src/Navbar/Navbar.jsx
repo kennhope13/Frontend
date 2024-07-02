@@ -3,16 +3,18 @@ import "./navbar.css";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
     const [imageUrl, setImageUrl] = useState('');
     const auth = Cookies.get('TOKEN');
-
+    const navigate = useNavigate();
     //đăng xuất
     const logout = async () => {
         const token = Cookies.get('TOKEN');
         if (!token) {
             //alert("Không có token")
-            console.log("Không có token");
+            //console.log("Không có token");
+            navigate("/login");
         } else {
             try {
                 const res = await axios.get("http://localhost:3001/logout", {
@@ -39,6 +41,7 @@ const Navbar = () => {
             if (!token) {
                 // alert("Không có token")
                 console.log("Không có token");
+                //navigate("/login");
             } else {
                 try {
                     const res = await axios.get("http://localhost:3001/", {
