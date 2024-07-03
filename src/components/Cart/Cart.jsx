@@ -3,31 +3,47 @@ import "./Cart.css"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { TextField } from '@mui/material';
 const Cart = () => {
     let tongTien = 0;
     const [allDogsCart, setAllDogsCart] = useState([]);
+    const [address, setAddress] = useState('');
     const navigate = useNavigate();
+    allDogsCart.forEach((items) => {
+        tongTien = tongTien + items.price
+    })
     const handleCheckOut = async () => {
         const token = Cookies.get('TOKEN');
         if (!token) {
             navigate("/login");
         } else {
-            const res = await axios.get(`/checkout`);
-            console.log(res.data);
-            if(res.data.data===null){
-                alert("Bạn vẫn chưa chọn sản phẩm nào để mua.");
-            }else{
-                window.location.reload();
+            const newItemsDetailCart = {
+                dog_items: allDogsCart,
+                Address: address,
+                TotalPrice: tongTien,
+                RegisterDate: Date.now()
             }
-            return res;
+            const res = await axios.post(`/detail`, newItemsDetailCart)
+            if (res.data.result === 1) {
+                const res1 = await axios.get(`/checkout`);
+                //console.log(res.data);
+                if (res.data.data === null) {
+                    alert("Bạn vẫn chưa chọn sản phẩm nào để mua.");
+                } else {
+                    alert("Mua thành công.");
+                    window.location.reload();
+                }
+                return res1;
+            } else {
+                alert(res.data.message);
+            }
+            //console.log("Data: ", res.data.data);
         }
     }
     const handleHome = () => {
         navigate("/");
     }
-    allDogsCart.forEach((items) => {
-        tongTien = tongTien + items.price
-    })
+
     useEffect(() => {
         async function getDataDog() {
             const res = await axios.get(`/cart`);
@@ -62,6 +78,14 @@ const Cart = () => {
                             </div>
                         )
                     })}
+                    <TextField
+                        fullWidth
+                        label="Địa chỉ"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        sx={{ mb: 6 }}
+
+                    />
                     <div className="cart-total">
                         Tổng thanh toán: {tongTien}$
                     </div>

@@ -20,7 +20,7 @@ const Navbar = () => {
                 const res = await axios.get("http://localhost:3001/logout", {
                     withCredentials: true,
                 });
-                console.log("đăng xuất: ", res.data);
+                //console.log("đăng xuất: ", res.data);
                 if (res.data.result === 1) {
                     alert("Đăng xuất thành công");
                     Cookies.remove('TOKEN');
@@ -40,7 +40,7 @@ const Navbar = () => {
             const token = Cookies.get('TOKEN');
             if (!token) {
                 // alert("Không có token")
-                console.log("Không có token");
+                //console.log("Không có token");
                 //navigate("/login");
             } else {
                 try {
@@ -72,9 +72,9 @@ const Navbar = () => {
                     <ul class="dropdown-menu">
                         <li><i class="fa fa-user" aria-hidden="true"></i> <Link to="/profile">&nbsp;Thông tin cá nhân</Link></li>
                         <li><i class="fa fa-key" aria-hidden="true"></i><Link to="">&nbsp;Đổi mật Khẩu</Link></li>
-                        {/* <li><a class="dropdown-item" href="#">Something else here</a></li> */}
+                        <li><i class="fa fa-caret-square-o-right" aria-hidden="true"></i><Link to="/detail-cart">&nbsp;Đơn hàng</Link></li>
                         <li><hr class="dropdown-divider"></hr></li>
-                        <li onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Đăng xuất</li>
+                        <li onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Đăng xuất</li>
                     </ul>
                 </div> : 'Đăng nhập'} </Link>
                 

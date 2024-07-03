@@ -16,6 +16,7 @@ import { Helmet } from 'react-helmet';
 import PrivateRoute from './PrivateRoute';
 import useCheckAdmin from './components/Admin/CheckAdmin';
 import Profile from './components/Users/Profile'
+import DetailCard from './components/Users/DetailCard'
 function App() {
   const [alldogss, setAllDogss] = useState([]);
   const [alldogs, setAllDogs] = useState([]);
@@ -82,6 +83,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/detail-cart' element={<DetailCard/>}/>
           {/* <PrivateRoute path="/admin" element={<Admin />} isAdmin={isAdmin} />
           <PrivateRoute path="/admin-dogs" element={<Listdogs />} isAdmin={isAdmin} /> */}
           <Route path="/admin" element={<Admin allUsers={allUsers} />} />

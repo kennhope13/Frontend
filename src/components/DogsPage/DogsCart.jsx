@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import "./Dogs.css";
 import axios from "axios";
 import Cookies from 'js-cookie';
@@ -9,9 +9,9 @@ const DogCart = (props) => {
     const navigate = useNavigate();
     const handleClick = async () => {
         const token = Cookies.get("TOKEN");
-        if(!token){
+        if (!token) {
             navigate("/login");
-        }else{
+        } else {
             setAdded(true);
             const newItems = {
                 dog_items: {
@@ -22,11 +22,11 @@ const DogCart = (props) => {
                 userId: Cookies.get('USERID'),
                 // imageUrl: imageUrl,
             }
-            
+
             const res = await axios.post('http://localhost:3001/dogs-cart', newItems);
         }
-        
-        
+
+
         // console.log("Data dog: ", res);
     }
     return (

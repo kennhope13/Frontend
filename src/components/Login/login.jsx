@@ -30,7 +30,7 @@ const Login = () => {
 
         try {
             const response = await axios.post("http://localhost:3001/login", formDataLogin);
-            console.log("dataLogin: ", response.data);
+            //console.log("dataLogin: ", response.data);
             if (response.data.result === 1 && response.data.data && response.data.data.Token) {
                 setCookie("TOKEN", response.data.data.Token);
                 setCookie("USERID", response.data.data.UserID);
