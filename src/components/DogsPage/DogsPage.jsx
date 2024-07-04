@@ -1,11 +1,14 @@
 import DogCart from "./DogsCart";
 import "./Dogs.css";
+import { Typography } from "@mui/material";
 const DogsPage = (props) => {
     const { alldogs } = props;
     // console.log("all dog: ",props);
     return (
 
-        <section className="dogs-container">
+        <div className="container">
+            <Typography variant="h4" sx={{ color: '#9c6644', fontFamily: "Inter, sans-serif" }} textAlign={"center"} gutterBottom>DANH SÁCH CHÓ</Typography>
+            <section className="dogs-container">
             {alldogs.map((alldogs) => {
                 return (
                     <div key={alldogs.id}>
@@ -14,6 +17,7 @@ const DogsPage = (props) => {
                 )
             })}
         </section>
+        </div>
 
     );
 }

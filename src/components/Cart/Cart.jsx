@@ -21,6 +21,7 @@ const Cart = () => {
                 dog_items: allDogsCart,
                 Address: address,
                 TotalPrice: tongTien,
+                userId: Cookies.get('USERID'),
                 RegisterDate: Date.now()
             }
             const res = await axios.post(`/detail`, newItemsDetailCart)
@@ -80,7 +81,7 @@ const Cart = () => {
                     })}
                     <TextField
                         fullWidth
-                        label="Địa chỉ"
+                        label="Địa chỉ nhận hàng"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         sx={{ mb: 6 }}

@@ -63,7 +63,7 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbarr">
-                <div className="logo"></div>
+                <div className='logo1'><Link to='/'><div className="logo"></div></Link></div>
                 <Link to="/">Trang chủ</Link>
                 <Link to="/dogs">Danh sách chó</Link>
                 <Link to="/checkout">Giỏ hàng</Link>
