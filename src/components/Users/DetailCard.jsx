@@ -1,96 +1,114 @@
 import { Container, Typography, Box, Grid, TextField, Avatar } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 const DetaiCard = () => {
-    const [Name, setName] = useState('');
-    const [Address, setAddress] = useState('');
-    const [img, setImg] = useState([]);
-    const [Price, setPrice] = useState('');
+    const [name, setName] = useState('');
+    const [detailCarts, setDetailCarts] = useState([]);
+
     useEffect(() => {
         const load = async () => {
-            const res = await axios.post(`/order`)
-            //console.log("Data: ", res.data.data.dogItems.map((items) => items.imageUrl));
-            if (res.data.data===null) {
+            try {
+                const res = await axios.post('/order');
+                const data = res.data.data;
+
+                if (data) {
+                    setName(data.Name);
+                    setDetailCarts(data.DetailCart);
+                } else {
+                    setName('');
+                    setDetailCarts([]);
+                }
+            } catch (error) {
+                console.error("Error loading data: ", error);
                 setName('');
-                setAddress('');
-                setPrice('');
-                setImg([]);
-            } else {
-                setName(res.data.data.Name);
-                setAddress(res.data.data.Address);
-                setPrice(res.data.data.TotalPrice);
-                setImg(res.data.data.dogItems.map((items) => ({ name: items.name, imageUrl: items.imageUrl })));
+                setDetailCarts([]);
             }
-            return res
-        }
+        };
         load();
-    }, [])
+    }, []);
 
     return (
-        <>
+        <Container>
+            <Box sx={{ mt: 5 }}>
+                <Typography
+                    variant="h4"
+                    sx={{ color: '#9c6644', fontFamily: "Inter, sans-serif" }}
+                    textAlign="center"
+                    gutterBottom
+                >
+                    ĐƠN HÀNG
+                </Typography>
+                <Typography
+                    variant="h6"
+                    sx={{ color: '#9c6644', fontFamily: "Inter, sans-serif" }}
+                    textAlign="center"
+                    gutterBottom
+                >
+                    Tên người nhận: {name}
+                </Typography>
+                {detailCarts.map((cart, index) => (
 
-            <Container>
-                <Box sx={{ mt: 5 }}>
-                    <Typography variant="h4" sx={{ color: '#9c6644', fontFamily: "Inter, sans-serif" }} textAlign={"center"} gutterBottom>ĐƠN HÀNG</Typography>
-                    <Grid container spacing={2} sx={{ mt: 2 }} justifyContent="center">
+                    <Grid container spacing={2} sx={{ mt: 2 }} justifyContent="center" key={index}>
 
                         <Grid item xs={12} sm={5}>
-                            <TextField
-                                fullWidth
-                                label="Tên"
-                                value={Name}
-                                sx={{ mb: 4 }}
-
-                            />
+                            <Typography
+                                variant="h6"
+                                sx={{ color: '#9c6644', fontFamily: "Inter, sans-serif" }}
+                                textAlign="center"
+                                gutterBottom
+                            >
+                                 Đơn số: {index + 1}
+                            </Typography>
+                           
                             <TextField
                                 fullWidth
                                 label="Địa chỉ nhận hàng"
-                                value={Address}
+                                value={cart.Address}
                                 sx={{ mb: 3 }}
-
+                                InputProps={{
+                                    readOnly: true,
+                                }}
                             />
-
-                            <Typography sx={{ ml: 2 }}>Danh sách chó: </Typography>
+                            <Typography sx={{ ml: 2 }}>Danh sách chó:</Typography>
                             <Box sx={{ border: '1px solid gray', borderRadius: '5px', padding: 2, mb: 4 }}>
-                                {img.map((item, index) => (
+                                {cart.dog_items.map((item, idx) => (
                                     <Box
-                                        sx={{ display: 'inline-grid' }}>
-                                        <Typography >{item.name}</Typography>
+                                        key={idx}
+                                        sx={{ display: 'inline-grid', alignItems: 'center', mb: 2 }}
+                                    >
+                                        <Typography>{item.name}</Typography>
                                         <Avatar
-                                            key={index}
                                             alt={item.name}
                                             src={`upload/${item.imageUrl}`}
                                             sx={{
                                                 width: 100,
                                                 height: 100,
-                                                mb: 5,
-                                                mt: 2,
-                                                mr: 5,
-                                                display: 'inline-flex',
+                                                ml: 4,
+
                                                 borderRadius: '5px',
-                                                border: '1px solid gray'
+                                                border: '1px solid gray',
+
                                             }}
                                         />
-
                                     </Box>
                                 ))}
                             </Box>
-
-
                             <TextField
                                 fullWidth
                                 label="Tổng thanh toán"
-                                value={`${Price}$`}
+                                value={`${cart.TotalPrice}$`}
                                 sx={{ mb: 4 }}
-
+                                InputProps={{
+                                    readOnly: true,
+                                }}
                             />
-
                         </Grid>
                     </Grid>
-                </Box>
-            </Container>
+                ))}
+            </Box>
+        </Container>
+    );
+};
 
-        </>
-    )
-}
-export default DetaiCard
+export default DetaiCard;

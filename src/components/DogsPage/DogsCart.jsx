@@ -33,14 +33,14 @@ const DogCart = (props) => {
         <>
             <section className="dogs">
                 <div className="dogs-info">
-                    <p>{name}</p>
-                    <p>{breed}</p>
+                    <p><b>Tên: {name}</b></p>
+                    <p><b>Giống: {breed}</b></p>
                 </div>
                 <div className="dogs-img-container">
                     <img className="dog-img" src={`upload/${imageUrl}`} alt="error" />
                 </div>
-                <div className="dogs-desc">{decription}</div>
-                <div className="dogs-price">{price}$</div>
+                <div className="dogs-desc">Mô tả: {decription}</div>
+                <div className="dogs-price">Giá: {price}$</div>
                 {isAdded ? (
                     <button disabled className="dogs-btn-disabled" onClick={handleClick}>ADDED</button>
                 ) : (

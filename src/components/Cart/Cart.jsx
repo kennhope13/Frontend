@@ -18,15 +18,19 @@ const Cart = () => {
             navigate("/login");
         } else {
             const newItemsDetailCart = {
-                dog_items: allDogsCart,
-                Address: address,
-                TotalPrice: tongTien,
+                DetailCart1: {
+                    dog_items: allDogsCart,
+                    Address: address,
+                    TotalPrice: tongTien,
+                    RegisterDate: Date.now()
+                },
                 userId: Cookies.get('USERID'),
-                RegisterDate: Date.now()
             }
+            
             const res = await axios.post(`/detail`, newItemsDetailCart)
+            console.log(res.data);
             if (res.data.result === 1) {
-                const res1 = await axios.get(`/checkout`);
+                await axios.get(`/checkout`);
                 //console.log(res.data);
                 if (res.data.data === null) {
                     alert("Bạn vẫn chưa chọn sản phẩm nào để mua.");
@@ -34,9 +38,11 @@ const Cart = () => {
                     alert("Mua thành công.");
                     window.location.reload();
                 }
-                return res1;
+
             } else {
+                await axios.get(`/checkout`);
                 alert(res.data.message);
+                window.location.reload();
             }
             //console.log("Data: ", res.data.data);
         }

@@ -1,69 +1,80 @@
 .navbarr {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    margin: 10px;
-    padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
 }
 
 .navbarr>* {
-    margin-left: 2rem;
-    color: #9c6644;
-    text-decoration: none;
-    transition: 200ms ease-in-out;
+  margin-left: 2rem;
+  color: #9c6644;
+  text-decoration: none;
+  transition: 200ms ease-in-out;
 }
 
-.navbarr > *:hover{
-    color: #e76f51;
-    text-decoration: none;
+.navbarr>*:hover {
+  color: #e76f51;
+  text-decoration: none;
 }
 
-  .logo{
-    background-image: url("../../public/logo.jpg");
-    background-size: contain; /* Ensure the image fits within the element */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: center; /* Center the image */
-    width: 200px; /* Specify the width of the logo container */
-    height: 100px; /* Specify the height of the logo container */
-    border-radius: 100%; /* Apply rounded corners */
-    
-    
-  }
-  .logo1{
-    
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .btn-group {
-    position: relative;
-    display: inline-block;
-    
+.logo {
+  background-image: url("../../public/logo.jpg");
+  background-size: contain;
+  /* Ensure the image fits within the element */
+  background-repeat: no-repeat;
+  /* Prevent the image from repeating */
+  background-position: center;
+  /* Center the image */
+  width: 200px;
+  /* Specify the width of the logo container */
+  height: 100px;
+  /* Specify the height of the logo container */
+  border-radius: 100%;
+  /* Apply rounded corners */
+
+
 }
 
-  .btn-group:hover .dropdown-menu {
-    display: block;
-    margin-left: -200px;
+.logo1 {
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-  .dropdown-item {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-   
+
+.btn-group {
+  position: relative;
+  display: inline-block;
+
 }
-  .dropdown-divider {
-    height: 1px;
-    margin: 8px 0;
-    overflow: hidden;
-    background-color: #e9ecef;
+
+.btn-group:hover .dropdown-menu {
+  display: block;
+  margin-left: -200px;
 }
+
+.dropdown-item {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+
+.dropdown-divider {
+  height: 1px;
+  margin: 8px 0;
+  overflow: hidden;
+  background-color: #e9ecef;
+}
+
 .dropdown-menu {
   position: absolute;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
   min-width: 160px;
 }
@@ -90,4 +101,39 @@
 .dropdown-divider {
   border-top: 1px solid #ccc;
   margin: 5px 0;
+}
+
+/* Search */
+
+.navbar{
+  margin-bottom: 20px;
+  
+}
+
+
+.cart-item-searchItems {
+  position: relative;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  width: calc(100% - 20px);
+  left: 0; /* Đặt vị trí từ cạnh trái của phần chứa */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho phần tử */
+}
+.nav {
+  position: relative; /* Đảm bảo rằng phần tử cha có vị trí tương đối để các phần tử con có thể định vị tuyệt đối dựa trên phần tử này */
+  
+}
+
+.cart-item-searchItems {
+  position: relative; /* Đặt vị trí tuyệt đối để phần tử này không đẩy các phần tử khác xuống */
+  background-color: white; /* Màu nền để các mục tìm kiếm dễ nhìn */
+  border: 1px solid #ccc; /* Đường viền để phân biệt */
+  padding: 10px; /* Khoảng cách bên trong phần tử */
+  z-index: 1000; /* Đảm bảo phần tử này hiển thị trên các phần tử khác */
+  width: calc(100% - 20px); /* Đảm bảo chiều rộng của phần tử con */
+  left: 0; /* Đặt vị trí từ cạnh trái của phần chứa */
+  top: 50px; /* Đặt vị trí từ cạnh trên của phần chứa (có thể thay đổi theo nhu cầu) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho phần tử */
 }
